@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glassmorphism | Magic Line Indicator</title>
+  </head>
+  <link rel="stylesheet" href="style.css" />
+  <script
+    src="https://kit.fontawesome.com/ce7ac0a80b.js"
+    crossorigin="anonymous"
+  ></script>
+  <body>
+    <ul>
+      <li>
+        <a href="#"><i class="fa-solid fa-house"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-user"></i></a>
+      </li>
+      <li class="active">
+        <a href="#"><i class="fa-solid fa-plus"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-gear"></i> </a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-comment"></i></a>
+      </li>
+      <div id="marker"></div>
+    </ul>
+
+    <script>
+      let marker = document.querySelector("#marker");
+      let list = document.querySelectorAll("ul li");
+      function moveIndicator(e) {
+        marker.style.left = e.offsetLeft + "px";
+        marker.style.width = e.offsetWidth + "px";
+      }
+      list.forEach((Link) => {
+        Link.addEventListener("mousemove", (e) => {
+          moveIndicator(e.target);
+        });
+      });
+
+      // active class in hovered list item
+      function activeLink() {
+        list.forEach((item) => item.classList.remove("active"));
+        this.classList.add("active");
+      }
+      list.forEach((item) => item.addEventListener("mouseover", activeLink));
+    </script>
+  </body>
+</html>
